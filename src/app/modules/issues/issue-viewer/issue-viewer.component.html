@@ -1,0 +1,118 @@
+<div class="jumbotron col-10 mx-auto">
+  <div class="main title">
+    <h1 class="display-6">Gitlab issue submitter</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <hr class="divider" />
+
+        <div class="form-group project-data">
+          <div *ngIf="projectAvatar; else elseSection" class="project-data img">
+            <p>
+              {{ "createIssue.project" | translate }}
+            </p>
+            <img
+              class="project-data project-pic"
+              [src]="projectAvatar"
+              alt="avatar"
+            />
+          </div>
+          <ng-template #elseSection>
+            <p>
+              {{ "createIssue.project" | translate }}
+            </p>
+            <div [ngClass]="identiconClass">
+              <div class="project-data identicon identicon-char">
+                {{ identicon }}
+              </div>
+            </div>
+          </ng-template>
+          <div class="project-data user project-name desc">
+            <div class="project-data user project-name">
+              <span class="project-data user">{{ username }}</span> /
+              <span class="project-data project-name">{{ projectName }}</span>
+            </div>
+            <br />
+            <small class="project-data project-desc" *ngIf="projectDescription">
+              {{ projectDescription }}
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group issue-details">
+          <div class="form-group issue-details id">
+            <span>#{{ issueId }}</span>
+          </div>
+          <hr class="divider inner" />
+          <div class="form-group issue-details title">
+            <!-- <p class="issue-details title-text">
+              {{ "viewer.title" | translate }}
+            </p> -->
+            <div class="issue-details title-box">
+              <span> {{ title }}</span>
+            </div>
+          </div>
+          <!-- <hr class="divider inner" /> -->
+          <div class="form-group issue-details description">
+            <!-- <p class="issue-details title-text">
+              {{ "viewer.description" | translate }}
+            </p> -->
+            <div class="issue-details description-box">
+              <span> {{ description }}</span>
+            </div>
+          </div>
+          <hr class="divider inner" />
+          <div class="form-group issue-details assignee">
+            <p class="issue-details title-text">
+              {{ "viewer.assignee" | translate }}
+            </p>
+            <div class="issue-details assignee-box">
+              <img
+                src="{{ assigneeAvatar }}"
+                alt="assigneeAvatar"
+                class="issue-details assignee-box assignee-avatar"
+              />
+              <div class="issue-details assignee-box text">
+                <span class="issue-details assignee-box text assignee-name">
+                  {{ assignee }}</span
+                >
+                <span class="issue-details assignee-box text assignee-username">
+                  @{{ assigneeUsername }}</span
+                >
+              </div>
+            </div>
+          </div>
+          <hr class="divider inner" />
+          <div class="form-group issue-details labels">
+            <p class="issue-details title-text">
+              {{ "viewer.issueLabels" | translate }}
+            </p>
+            <div class="issue-details labels-box">
+              <button
+                *ngFor="let issueLabels of issueLabelsArr"
+                class="issue-details labels-box buttons"
+                [ngStyle]="{
+                  'background-color': issueLabels.color,
+                  color: issueLabels.text_color
+                }"
+              >
+                {{ issueLabels.name }}
+              </button>
+            </div>
+          </div>
+          <hr class="divider inner" />
+        </div>
+        <div class="button-box">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="backToSubmittedIssuePage()"
+          >
+            {{ "viewer.close" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

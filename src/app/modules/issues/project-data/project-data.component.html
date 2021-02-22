@@ -1,0 +1,92 @@
+<div class="jumbotron col-10 mx-auto">
+  <div class="main title">
+    <h1 class="display-6">Gitlab issue submitter</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group buttons">
+          <button class="btn btn-primary" type="button">
+            {{ "projectDataProps.selectProject" | translate }}
+          </button>
+          <button
+            type="submit"
+            [disabled]
+            class="btn btn-default"
+            type="button"
+          >
+            {{ "projectDataProps.submitIssue" | translate }}
+          </button>
+        </div>
+        <hr class="divider" />
+        <div class="form-group select-project">
+          <label for="select-project" class="label select-project">{{
+            "projectDataProps.selectProject" | translate
+          }}</label>
+          <ng-template #rt let-r="result" let-t="term">
+            <img
+              *ngIf="r.avatar_url; else elseSection"
+              [src]="r.avatar_url"
+              alt="avatar"
+              class="search search-suggests avatar"
+            />
+            <ng-template #elseSection>
+              <div
+                id="identiconDiv"
+                [ngClass]="getIdenticonClass(r.id, r.avatar_url)"
+              >
+                <span class="search search-suggests identicon-char">
+                  {{ r.name.charAt(0).toUpperCase() }}
+                </span>
+              </div>
+            </ng-template>
+            <div class="search search-suggests user project description">
+              <span class="search search-suggests user project">
+                <ngb-highlight
+                  class="search search-suggests user-ht"
+                  [result]="r.owner.name + ' / '"
+                >
+                </ngb-highlight>
+                <ngb-highlight
+                  class="search search-suggests project-ht"
+                  [result]="r.name"
+                  [term]="t"
+                >
+                </ngb-highlight>
+              </span>
+              <small class="search search-suggests description">
+                <ngb-highlight
+                  class="search search-suggests description-ht"
+                  [result]="r.description"
+                >
+                </ngb-highlight>
+              </small>
+            </div>
+          </ng-template>
+          <input
+            type="search"
+            id="inputField"
+            class="form-control form-control-md projectInput"
+            placeholder="{{ 'projectDataProps.selectProject' | translate }}"
+            [ngbTypeahead]="searchProject"
+            [inputFormatter]="inputFormatListValue"
+            [resultFormatter]="resultFormatListValue"
+            (selectItem)="selectedProject($event)"
+            [resultTemplate]="rt"
+          />
+        </div>
+        <div class="button-box">
+          <button
+            id="next"
+            class="btn btn-primary next"
+            (click)="getProjectId(clickedProject.id)"
+          >
+            {{ "projectDataProps.next" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [result]="r.owner.name + ' / ' + r.name" -->

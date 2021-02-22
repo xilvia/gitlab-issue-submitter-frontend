@@ -1,0 +1,21 @@
+.container {
+  display: inline-block;
+  position: absolute;
+  top: 3rem;
+  right: 0rem;
+  text-align: right;
+  z-index: 1;
+}
+
+.select-lang.logout {
+  display: inline-flex;
+  margin-right: 1rem;
+}
+
+.btn-primary {
+  margin-top: 1rem;
+}
+
+
+
+

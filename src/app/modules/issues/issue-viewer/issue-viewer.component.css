@@ -1,0 +1,165 @@
+.jumbotron {
+  background-color: rgb(250, 250, 250);
+  color: rgb(55, 58, 60);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin: auto;
+  min-width: 280px;
+  padding: 1rem;
+  position: relative;
+  top: 3rem;
+}
+
+.main.title {
+  display: inline-block;
+  font-size: 25%;
+  margin-top: 2rem;
+  padding: inherit;
+  margin-bottom: 0rem;
+}
+
+.divider {
+  background-color: rgba(193, 194, 195, 0.5);
+  height: 1.7px;
+}
+
+.project-data {
+  display: inline-block;
+}
+
+.project-data.identicon {
+  border-radius: 5px;
+  float: left;
+  height: 45px;
+  margin-right: 8px;
+  text-align: center;
+  padding-top: 0.15rem;
+  width: 45px;
+}
+
+.project-data.identicon.bg1 {
+  background-color: rgb(255, 235, 238);
+}
+
+.project-data.identicon.bg2 {
+  background-color: rgb(243, 229, 245);
+}
+
+.project-data.identicon.bg3 {
+  background-color: rgb(232, 234, 246);
+}
+
+.project-data.identicon.bg4 {
+  background-color: rgb(227, 242, 253);
+}
+
+.project-data.identicon.bg5 {
+  background-color: rgb(224, 242, 241);
+}
+
+.project-data.identicon.bg6 {
+  background-color: rgb(251, 233, 231);
+}
+
+.project-data.identicon.bg7 {
+  background-color: rgb(238, 238, 238);
+}
+
+.project-data.identicon.identicon-char {
+  font-size: x-large;
+}
+
+.project-data.user.project-name.desc {
+  display: inline-block;
+}
+
+.project-data.project-desc {
+  color: rgb(98, 101, 104);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 180px;
+}
+
+.project-data.project-name {
+  font-weight: bolder;
+}
+
+.project-data.project-pic {
+  border-radius: 5px;
+  height: 45px;
+  margin-right: 8px;
+  vertical-align: sub;
+  width: 45px;
+}
+
+.project-data.user {
+  font-weight: normal;
+}
+
+.divider.inner {
+  background-color: rgba(232, 232, 232, 0.5);
+  height: 0.5px;
+}
+
+.form-group.issue-details {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.issue-details {
+  min-width:180px;
+  word-break: break-word;
+}
+
+.issue-details.title-text {
+  margin-bottom: 5px;
+}
+
+.issue-details.title-box {
+  font-weight: bold;
+}
+
+.issue-details.assignee-box {
+  display: block;
+}
+
+.issue-details.assignee-box.assignee-avatar {
+   border-radius: 100%;
+   float: left;
+   margin-right: 9px;
+   min-inline-size: auto;
+   padding-top: 4px;
+   width: 38px;
+}
+
+.issue-details.assignee-box.text.assignee-name {
+  margin-bottom: -6px;
+}
+
+.issue-details.labels-box.buttons {
+  align-items: center;
+  border: none;
+  border-radius: 1rem;
+  display: inline-flex;
+  font-size: small;
+  justify-content: center;
+  margin: 0.2rem;
+  min-width: auto;
+  padding: 0%;
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: center;
+}
+
+.btn.btn-primary {
+  border-radius: 4px;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+h1 {
+  font-size: 3.3rem;
+  letter-spacing: -0.6px;
+}
+

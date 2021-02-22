@@ -1,0 +1,43 @@
+<div class="jumbotron col-10 mx-auto">
+  <div class="main title">
+    <h1 class="display-6">Gitlab issue submitter</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group message">
+          <p class="message-text">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-check-circle"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline></svg>{{ "submitted.success" | translate: { count: issueId } }}
+          </p>
+        </div>
+        <hr class="divider" />
+        <div class="form-group buttons">
+          <button class="btn btn-primary" type="button" (click)="viewIssue()">
+            {{ "submitted.viewSubmittedIssue" | translate }}
+          </button>
+          <button
+            type="submit"
+            class="btn btn-default"
+            type="button"
+            (click)="submitNewIssue()"
+          >
+            {{ "submitted.submitNewIssue" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,268 @@
+<div class="jumbotron col-10 mx-auto" #jumbotron (click)="clickOutsideListener()">
+  <div class="main title">
+    <h1 class="display-6">Gitlab issue submitter</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <form
+          [formGroup]="issueSubmitter"
+          (ngSubmit)="onSubmit()"
+          #formIssue="ngForm"
+          action=""
+        >
+          <div class="form-group buttons">
+            <button
+              class="btn btn-default"
+              type="button"
+              (click)="selectProjectPage()"
+            >
+              {{ "createIssue.selectProject" | translate }}
+            </button>
+            <button class="btn btn-primary" [disabled] type="submit">
+              {{ "createIssue.submitIssue" | translate }}
+            </button>
+          </div>
+          <hr class="divider project-main" />
+          <div class="form-group project-data">
+            <div
+              *ngIf="projectAvatar; else elseSection"
+              class="project-data img"
+            >
+              <p>
+                {{ "createIssue.project" | translate }}
+              </p>
+              <img
+                class="project-data project-pic"
+                [src]="projectAvatar"
+                alt="avatar"
+              />
+            </div>
+            <ng-template #elseSection>
+              <p>
+                {{ "createIssue.project" | translate }}
+              </p>
+              <div [ngClass]="identiconClass">
+                <div class="project-data identicon identicon-char">
+                  {{ identicon }}
+                </div>
+              </div>
+            </ng-template>
+            <div class="project-data user project-name desc">
+              <div class="project-data user project-name">
+                <span class="project-data user">{{ username }}</span> /
+                <span class="project-data project-name">{{ projectName }}</span>
+              </div>
+              <br />
+              <small
+                class="project-data project-desc"
+                *ngIf="projectDescription"
+              >
+                {{ projectDescription }}
+              </small>
+            </div>
+          </div>
+          <br />
+          <div class="form-group title">
+            <label for="title" class="title" >
+              {{ "createIssue.title" | translate }}
+            </label>
+            <input
+              class="form-control form-control-md title"
+              type="text"
+              formControlName="title"
+              id="title"
+              placeholder="{{ 'createIssue.enterTitle' | translate }}"
+            />
+            <span
+              class="text-danger"
+              *ngIf="
+                title.invalid &&
+                (title.dirty || title.touched) &&
+                title.errors?.required
+              "
+            >
+              {{ "createIssue.titleIsRequired" | translate }}
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                title.invalid &&
+                (title.dirty || title.touched) &&
+                title.errors?.minlength
+              "
+            >
+              {{ "createIssue.titleIsShort" | translate }}
+            </span>
+          </div>
+          <div class="form-group description">
+            <label for="description" class="description">
+              {{ "createIssue.description" | translate }}
+            </label>
+            <textarea
+              class="form-control form-control-md description"
+              type="text"
+              formControlName="description"
+              id="description"
+              placeholder="{{ 'createIssue.enterDescription' | translate }}"
+            >
+            </textarea>
+            <span
+              class="text-danger"
+              *ngIf="
+                description.invalid &&
+                (description.dirty || description.touched) &&
+                description.errors?.required
+              "
+            >
+              {{ "createIssue.descriptionIsRequired" | translate }}
+            </span>
+            <span
+              class="text-danger"
+              *ngIf="
+                description.invalid &&
+                (description.dirty || description.touched) &&
+                description.errors?.minlength
+              "
+            >
+              {{ "createIssue.descriptionIsShort" | translate }}
+            </span>
+          </div>
+          <div id="assigneeDiv" class="form-group assignee">
+            <label for="assignee" class="search search-assignee">
+              {{ "createIssue.assignee" | translate }}
+            </label>
+            <br />
+            <ng-template #art let-ar="result" let-at="term">
+              <img
+                class="search search-suggests user-avatar"
+                [src]="ar.avatar_url"
+              />
+              <span class="search search-suggests assignee name username">
+                <ngb-highlight
+                  class="search search-suggests assignee-name-ht"
+                  id="nameHighlight"
+                  [result]="ar.name"
+                  [term]="at"
+                ></ngb-highlight>
+                <br />
+                <small
+                  class="search search-suggests assignee-username"
+                  id="usernameSmall"
+                >
+                  <ngb-highlight
+                    class="search search-suggests assignee-username-ht"
+                    id="smallHighlight"
+                    [result]="'@' + ar.username"
+                  ></ngb-highlight>
+                </small>
+              </span>
+            </ng-template>
+            <input
+              #fakeInputAssignee
+              type="text"
+              class="form-control form-control-md fakeInputAssignee"
+              [ngbTypeahead]
+              placeholder="{{ 'createIssue.selectAssignee' | translate }}"
+              id="fakeInputassignee"
+            />
+            <div
+              [ngClass]="
+                isSearchAssigneesActive
+                  ? 'search search-assignee visible'
+                  : 'search search-assignee hidden'
+              "
+            >
+              <label class="search label-select assignee"
+                >Select assignee</label
+              >
+              <hr class="divider search assignee" />
+              <input
+                #inputAssignee
+                type="search"
+                formControlName="assignee"
+                class="form-control form-control-md assignee"
+                id="inputAssignee"
+                [ngbTypeahead]="searchAssignees"
+                (selectItem)="selectedAssignee($event)"
+                autofocus
+                placeholder="{{ 'createIssue.searchUsers' | translate }}"
+                [resultFormatter]="resultFormatAssigneeListValue"
+                [inputFormatter]="inputFormatAssigneeListValue"
+                [resultTemplate]="art"
+              />
+              <span
+                class="text-danger assignee"
+                *ngIf="
+                  assignee.invalid &&
+                  (assignee.dirty || assignee.touched) &&
+                  assignee.errors?.required
+                "
+              >
+                {{ "createIssue.assigneeIsRequired" | translate }}
+              </span>
+            </div>
+          </div>
+          <div id="labelsDiv" class="form-group labels">
+            <label for="labels" class="search search-labels">
+              {{ "createIssue.labels" | translate }}
+            </label>
+            <br />
+            <ng-template #lrt let-lr="result" let-lt="term">
+              <div
+                class="search search-suggests labels-square"
+                id="square"
+                [ngStyle]="{ 'background-color': lr.color }"
+              ></div>
+              <ngb-highlight
+                class="search search-suggests labels-name"
+                [result]="lr.name"
+                [term]="lt"
+              ></ngb-highlight>
+            </ng-template>
+            <input
+              #fakeInputLabel
+              type="text"
+              formControlName="label"
+              class="form-control form-control-md fakeInputLabels"
+              placeholder="{{ 'createIssue.selectLabels' | translate }}"
+            />
+            <div
+              [ngClass]="
+                isSearchLabelsActive
+                  ? 'search search-labels visible'
+                  : 'search search-labels hidden'
+              "
+            >
+              <label class="search label-select labels">Select labels</label>
+              <hr class="divider search labels" />
+              <input
+                #inputLabel
+                type="search"
+                class="form-control form-control-md label"
+                id="inputLabel"
+                [ngbTypeahead]="searchLabels"
+                (selectItem)="selectedLabel($event)"
+                autofocus
+                [resultFormatter]="resultFormatLabelsListValue"
+                [inputFormatter]="inputFormatLabelsListValue"
+                placeholder="{{ 'createIssue.searchLabels' | translate }}"
+                [resultTemplate]="lrt"
+              />
+            </div>
+          </div>
+          <br />
+          <button
+            id="bottomSubmit"
+            class="btn btn-primary bottom"
+            [disabled]
+            type="submit"
+          >
+            {{ "createIssue.submitIssue" | translate }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,264 @@
+.jumbotron {
+  background-color: rgb(236, 238, 238);
+  color: rgb(55, 58, 60);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin: auto;
+  min-width: 250px;
+  padding: 1rem;
+  position: relative;
+  top: 3rem;
+}
+
+.main.title {
+  display: inline-block;
+  font-size: 25%;
+  margin-top: 2rem;
+  padding: inherit;
+  padding-bottom: 0.7rem;
+}
+
+.divider.project-main {
+  background-color: rgba(55, 58, 60, 0.5);
+  height: 0.1px;
+}
+
+.project-data {
+  display: inline-block;
+}
+
+.project-data.project-pic {
+  border-radius: 5px;
+  height: 45px;
+  margin-right: 8px;
+  vertical-align: sub;
+  width: 45px;
+}
+
+.project-data.identicon {
+  border-radius: 5px;
+  float: left;
+  height: 45px;
+  margin-right: 8px;
+  text-align: center;
+  padding-top: 0.15rem;
+  width: 45px;
+}
+
+.project-data.identicon.bg1 {
+  background-color: rgb(255, 235, 238);
+}
+
+.project-data.identicon.bg2 {
+  background-color: rgb(243, 229, 245);
+}
+
+.project-data.identicon.bg3 {
+  background-color: rgb(232, 234, 246);
+}
+
+.project-data.identicon.bg4 {
+  background-color: rgb(227, 242, 253);
+}
+
+.project-data.identicon.bg5 {
+  background-color: rgb(224, 242, 241);
+}
+
+.project-data.identicon.bg6 {
+  background-color: rgb(251, 233, 231);
+}
+
+.project-data.identicon.bg7 {
+  background-color: rgb(238, 238, 238);
+}
+
+.project-data.identicon.identicon-char {
+  font-size: x-large;
+}
+
+.project-data.user.project-name.desc {
+  display: inline-block;
+}
+
+.project-data.user {
+  font-weight: normal;
+}
+
+.project-data.project-name {
+  font-weight: bolder;
+}
+
+.project-data.project-desc {
+  color: rgb(98, 101, 104);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 180px;
+}
+
+.form-control.form-control-md {
+  min-width: 180px;
+  width: 50%;
+}
+
+.form-group {
+  margin-bottom: 1.3rem;
+}
+
+.form-group.assignee {
+  max-height: 4.2rem;
+}
+
+.form-group.labels {
+  max-height: 4.2rem;
+}
+
+.form-group.buttons {
+  margin-bottom: 1.7rem;
+}
+
+.form-group.project-data {
+  padding-top: 1.3rem;
+}
+
+.form-control.form-control-md.assignee,
+.form-control.form-control-md.label {
+  background-image: url("src/app/modules/issues/img/search.svg");
+  background-origin: border-box;
+  background-repeat: no-repeat;
+  background-position: right 5% bottom 50%;
+  background-size: 8%;
+  margin: auto;
+  margin-bottom: 10px;
+  min-width: 90%;
+  padding-right: 1.7rem;
+  width: 90%;
+}
+
+.form-control.form-control-md.description {
+  height: 9rem;
+}
+
+.search.search-assignee.visible,
+.search.search-labels.visible {
+  background-color: rgb(255, 255, 255);
+  margin-top: 5px;
+  min-width: 180px;
+  position: relative;
+  padding-bottom: 10px;
+  width: 25%;
+}
+
+.form-control:focus,
+.search.search-assignee.visible,
+.search.search-labels.visible {
+  border-color: rgba(70, 70, 70, 0.075);
+  box-shadow: 0px 0px 3px rgba(70, 70, 70, 0.3);
+  z-index: 2;
+}
+
+.search.search-assignee.hidden,
+.search.search-labels.hidden {
+  height: 0px;
+  visibility: hidden;
+}
+
+.search.label-select {
+  display: block;
+  height: 25px;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.divider.search {
+  background-color: rgba(70, 70, 70, 0.075);
+  height: 1px;
+}
+
+.search.search-suggests.user-avatar {
+  border-radius: 100%;
+  float: left;
+  height: 45px;
+  margin-right: 8px;
+  vertical-align: text-bottom;
+  width: 45px;
+}
+
+.search.search-suggests.assignee.name.username {
+  display: inline-block;
+}
+
+.search.search-suggests.assignee-username {
+  color: rgb(98, 101, 104);
+  vertical-align: 20%;
+}
+
+.search.search-suggests.labels-square {
+  border-radius: 35%;
+  height: 14px;
+  margin-left: 5px;
+  margin-right: 8px;
+  vertical-align: middle;
+  width: 14px;
+}
+
+::placeholder {
+  color: rgb(153, 153, 153);
+}
+
+::ng-deep .dropdown-item {
+  align-items: center;
+  display: inline-flex;
+  overflow: hidden;
+  padding: 0.4rem 0.8rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100% !important;
+}
+
+::ng-deep .dropdown-item.active {
+  background-color: rgb(248, 249, 250);
+  color: rgb(55, 58, 60);
+  width: 100% !important;
+}
+
+::ng-deep .dropdown-menu.show {
+  display: contents;
+  min-width: 180px;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.btn {
+  border-radius: 4px;
+  font-weight: normal;
+}
+
+.btn.btn-default {
+  background-color: rgb(255, 255, 255);
+  color: rgb(2, 117, 216);
+  /* font-weight: 600; */
+  margin-right: 10px;
+}
+
+.btn.btn-primary.bottom {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.text-danger {
+  font-size: small;
+}
+
+.text-danger.assignee {
+  display: block;
+  text-align: center;
+}
+
+h1 {
+  font-size: 1230%;
+  letter-spacing: -1px;
+}

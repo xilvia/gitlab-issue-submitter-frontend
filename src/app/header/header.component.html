@@ -1,0 +1,21 @@
+<div class="col-10 mx-auto">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="select-lang logout">
+          <app-select-language></app-select-language>
+          <div *ngIf="userIsAuthenticated">
+            <button
+              class="btn btn-primary"
+              id="logout"
+              type="button"
+              (click)="onLogout()"
+            >
+              {{ "login.logout" | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

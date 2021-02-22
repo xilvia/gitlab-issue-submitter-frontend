@@ -1,0 +1,68 @@
+.jumbotron {
+  background-color: rgb(236, 238, 238);
+  color: rgb(55, 58, 60);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin: auto;
+  min-width: 280px;
+  padding: 1rem;
+  position: relative;
+  top: 3rem;
+}
+
+.main.title {
+  display: inline-block;
+  font-size: 25%;
+  margin-top: 2rem;
+  padding: inherit;
+  margin-bottom: 0rem;
+}
+
+.message-text {
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin-bottom: 3rem;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.feather.feather-check-circle {
+  color: rgb(61, 150, 83);
+  height: 3rem;
+  margin-right: 1rem;
+  stroke-width: 1;
+  width: 3rem;
+}
+
+.divider {
+  background-color: rgba(193, 194, 195, 0.5);
+  height: 1.7px;
+}
+
+.form-group.buttons {
+  margin-bottom: 1.5rem;
+  margin-top: 1.8rem;
+}
+
+.btn {
+  border-radius: 4px;
+}
+
+.btn.btn-primary {
+  margin-right: 1rem;
+}
+
+.btn.btn-default {
+  color: rgb(2, 117, 216);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3.3rem;
+  letter-spacing: -0.6px;
+}
+
+
+
+
+
